@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-AU" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services & Session Planner — Oz Soundz Studios</title>
+<meta name="description" content="Recording, mixing, mastering, podcast and facility hire at Oz Soundz Studios — plus a Session Planner to estimate how much studio time your project needs.">
+<meta name="theme-color" content="#070908">
+<meta property="og:title" content="Services & Session Planner — Oz Soundz Studios">
+<meta property="og:description" content="Recording, mixing, mastering, podcast and facility hire at Oz Soundz Studios — plus a Session Planner to estimate how much studio time your project needs.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../assets/img/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="stylesheet" href="../assets/css/studios.css">
+</head>
+<body data-root="../" data-nav="studio">
+<div id="site-header"></div>
+<main id="main">
+<header class="phead scratches">
+  <div class="big-bg">Services</div>
+  <div class="container">
+    <div class="crumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">The Studio</a><span>/</span><span>Services</span></div>
+    <h1>Studio <em>services</em></h1>
+    <p>Everything from the first take to the final master — with in-house engineers, or your own pre-approved engineer by arrangement.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="grid g2">
+      <article class="card rv" id="recording"><span class="num">01</span><div class="ico-box"><i data-i="mic"></i></div><span class="k">Recording</span><h3>Live &amp; layered tracking</h3>
+        <p>Full-band live takes or build-it-up overdubs. Acoustically treated live room, two isolation booths, and individual headphone mixes for every player.</p>
+        <ul class="feature-list mt1"><li>Full band, solo, duo or ensemble</li><li>Drums, amps, vocals, acoustic instruments</li><li>Iso booths for separation — or play it live together</li></ul></article>
+      <article class="card rv" id="mixing"><span class="num">02</span><div class="ico-box"><i data-i="sliders"></i></div><span class="k">Post production</span><h3>Mixing</h3>
+        <p>Balance, depth and clarity that translates to earbuds, car stereos and club PAs. Attend the session or send stems in from elsewhere.</p>
+        <ul class="feature-list mt1"><li>Tracked here or recorded elsewhere</li><li>Attended or unattended mixes</li><li>Revisions built into the process</li></ul></article>
+      <article class="card rv" id="mastering"><span class="num">03</span><div class="ico-box"><i data-i="disc"></i></div><span class="k">Finalisation</span><h3>Mastering</h3>
+        <p>The final polish — loudness, tone and consistency across a release, ready for streaming platforms and physical formats.</p>
+        <ul class="feature-list mt1"><li>Singles, EPs and albums</li><li>Streaming-ready deliverables</li><li>Consistent sequencing across a record</li></ul></article>
+      <article class="card rv" id="podcast"><span class="num">04</span><div class="ico-box"><i data-i="broadcast"></i></div><span class="k">Spoken word</span><h3>Podcast &amp; voiceover</h3>
+        <p>Treated rooms that make voices sound expensive. For podcasters, voice actors, audiobook narrators and content creators.</p>
+        <ul class="feature-list mt1"><li>Multi-host podcast recording</li><li>Voiceover &amp; narration</li><li>Edit and mix for release</li></ul></article>
+      <article class="card rv" id="hire"><span class="num">05</span><div class="ico-box"><i data-i="wrench"></i></div><span class="k">By arrangement</span><h3>Facility hire</h3>
+        <p>Bring your own pre-approved engineer and use the rooms. Ideal for producers and engineers who need a proper space to work.</p>
+        <ul class="feature-list mt1"><li>Pre-approval process for external engineers</li><li>House tech support on hand</li></ul></article>
+      <article class="card rv" id="support"><span class="num">06</span><div class="ico-box"><i data-i="heart"></i></div><span class="k">Planned</span><h3>Artist support programs</h3>
+        <p>We plan to build funding programs, events and recording opportunities that help emerging artists get their music made and heard.</p>
+        <ul class="feature-list mt1"><li>Details announced as they take shape</li><li>Register to hear first</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="planner">
+  <div class="container">
+    <div class="eyebrow">Interactive</div>
+    <h2 class="title">Session <em>planner</em></h2>
+    <p class="body">Rough out how much studio time your project needs. Every session is different — this is a planning guide, not a quote.</p>
+    <form class="est mt2" id="planner-form" onsubmit="return false">
+      <div class="est-in">
+        <label class="f"><span>What are you recording?</span></label>
+        <div class="opt-grid" id="plan-types"></div>
+        <div class="mt2">
+          <label class="f" for="songs"><span id="songs-lbl">Songs</span></label>
+          <div class="range-row"><input type="range" id="songs" name="songs" min="1" max="20" value="4"><output id="songs-out">4</output></div>
+        </div>
+        <div class="mt2">
+          <label class="f"><span>Stages</span></label>
+          <div class="checks">
+            <label><input type="checkbox" name="stage" value="tracking" checked><span>Tracking</span></label>
+            <label><input type="checkbox" name="stage" value="mixing" checked><span>Mixing</span></label>
+            <label><input type="checkbox" name="stage" value="mastering" checked><span>Mastering</span></label>
+          </div>
+        </div>
+        <div class="mt2">
+          <label class="f"><span>Extras (per song)</span></label>
+          <div class="checks" id="plan-extras"></div>
+        </div>
+      </div>
+      <div class="est-out" id="plan-out"></div>
+    </form>
+    <div class="disclaimer mt1"><b>Planning guide only.</b> Hour estimates are general rules of thumb and will vary with arrangement, preparation and performance. Pricing will be published before launch.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">How it’ll work</div>
+    <h2 class="title">From enquiry<br><em>to release</em></h2>
+    <div class="grid g4 mt2">
+      <div class="card rv"><span class="num">01</span><span class="k">Enquire</span><h3>Talk it through</h3><p>Tell us about the project — what, who, how many songs, and when.</p></div>
+      <div class="card rv"><span class="num">02</span><span class="k">Plan</span><h3>Pre-production</h3><p>We map out the session, the setup, and what you need to bring.</p></div>
+      <div class="card rv"><span class="num">03</span><span class="k">Record</span><h3>Roll tape</h3><p>Track in the rooms with our engineers or your approved engineer.</p></div>
+      <div class="card rv"><span class="num">04</span><span class="k">Release</span><h3>Mix &amp; master</h3><p>Final mixes and masters delivered ready for release.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Bookings open 2027/28</h2>
+    <p>Register now for priority access and early word on pricing.</p>
+    <a class="btn dark" href="../contact.html">Register Interest</a>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

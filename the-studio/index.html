@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-AU" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rooms — Oz Soundz Studios</title>
+<meta name="description" content="Explore the concept floor plan for Oz Soundz Studios — control room, live room, two isolation booths, machine room, lounge and more.">
+<meta name="theme-color" content="#070908">
+<meta property="og:title" content="The Rooms — Oz Soundz Studios">
+<meta property="og:description" content="Explore the concept floor plan for Oz Soundz Studios — control room, live room, two isolation booths, machine room, lounge and more.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../assets/img/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="stylesheet" href="../assets/css/studios.css">
+</head>
+<body data-root="../" data-nav="studio">
+<div id="site-header"></div>
+<main id="main">
+<header class="phead scratches">
+  <div class="big-bg">Rooms</div>
+  <div class="container">
+    <div class="crumbs"><a href="../index.html">Home</a><span>/</span><span>The Studio</span></div>
+    <h1>The <em>rooms</em></h1>
+    <p>Seven spaces, one signal path. Tap around the concept floor plan to see what each room is for and how it’s being designed.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="plan-wrap">
+      <div class="rv">
+        <div class="plan">
+          <svg id="plan-svg" viewBox="0 0 800 520" role="group" aria-label="Concept floor plan">
+            <polygon class="room" data-room="live" points="20,20 450,20 470,300 20,300"/>
+            <text x="235" y="150" text-anchor="middle" style="font-size:26px">Live Room</text>
+            <text class="s" x="235" y="172" text-anchor="middle">FULL BAND · DRUMS · ENSEMBLE</text>
+
+            <polygon class="room" data-room="control" points="500,20 780,20 780,250 510,250"/>
+            <text x="645" y="130" text-anchor="middle" style="font-size:22px">Control Room</text>
+            <text class="s" x="645" y="150" text-anchor="middle">MIX POSITION</text>
+
+            <rect class="room" data-room="isoA" x="20" y="330" width="150" height="170"/>
+            <text x="95" y="415" text-anchor="middle">Iso A</text>
+            <text class="s" x="95" y="433" text-anchor="middle">VOCAL / VO</text>
+
+            <rect class="room" data-room="isoB" x="190" y="330" width="150" height="170"/>
+            <text x="265" y="415" text-anchor="middle">Iso B</text>
+            <text class="s" x="265" y="433" text-anchor="middle">AMPS / LOUD</text>
+
+            <rect class="room" data-room="machine" x="510" y="270" width="120" height="90"/>
+            <text x="570" y="318" text-anchor="middle" style="font-size:13px">Machine</text>
+
+            <rect class="room" data-room="office" x="650" y="270" width="130" height="90"/>
+            <text x="715" y="312" text-anchor="middle" style="font-size:13px">Office</text>
+            <text class="s" x="715" y="328" text-anchor="middle">&amp; STORAGE</text>
+
+            <polygon class="room" data-room="lounge" points="370,380 780,380 780,500 370,500"/>
+            <text x="575" y="445" text-anchor="middle" style="font-size:20px">Lounge &amp; Reception</text>
+
+            <!-- glass -->
+            <line class="glass" x1="462" y1="110" x2="468" y2="200" />
+            <line class="glass" x1="505" y1="110" x2="508" y2="200" />
+            <line class="glass" x1="60" y1="304" x2="130" y2="304" />
+            <line class="glass" x1="230" y1="304" x2="300" y2="304" />
+            <!-- doors -->
+            <path class="door" d="M470 260 q20 0 30 -10" />
+            <path class="door" d="M150 330 q0 -14 14 -18" />
+            <path class="door" d="M320 330 q0 -14 14 -18" />
+            <path class="door" d="M400 380 q0 -18 18 -22" />
+            <path class="door" d="M600 360 q0 12 12 16" />
+            <!-- tie lines -->
+            <path d="M570 270 L570 240" stroke="#FFB23F" stroke-width="1" stroke-dasharray="2 4"/>
+            <text class="s" x="785" y="515" text-anchor="end">▲ N · CONCEPT ONLY</text>
+          </svg>
+          <div class="plan-caption">CONCEPT LAYOUT · INDICATIVE ONLY · NOT TO SCALE · FINAL DESIGN SET BY ARCHITECT &amp; ACOUSTIC ENGINEER</div>
+        </div>
+        <div class="row mt1 mono" style="font-size:.66rem;letter-spacing:.14em;color:var(--td)">
+          <span><span style="display:inline-block;width:18px;height:3px;background:var(--glow);vertical-align:middle"></span> GLASS / SIGHTLINE</span>
+          <span><span style="display:inline-block;width:18px;border-top:1px dashed var(--valve);vertical-align:middle"></span> DOOR</span>
+        </div>
+      </div>
+      <aside class="room-info rv" id="room-info" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="eyebrow">Design principles</div>
+    <h2 class="title">How the rooms<br><em>are being designed</em></h2>
+    <div class="grid g4 mt2">
+      <div class="card rv"><div class="ico-box"><i data-i="ruler"></i></div><h3>Golden ratios</h3><p>Room dimensions based on acoustic “golden ratios” to keep standing waves under control.</p></div>
+      <div class="card rv"><div class="ico-box"><i data-i="home"></i></div><h3>Room within room</h3><p>Floating floors, double walls and decoupled ceilings so the band doesn’t leak into the neighbours — or the booths.</p></div>
+      <div class="card rv"><div class="ico-box"><i data-i="wave"></i></div><h3>Treatment</h3><p>Bass traps, diffusers and absorbers tuned to an RT60 reverberation target set for each room.</p></div>
+      <div class="card rv"><div class="ico-box"><i data-i="plug"></i></div><h3>Clean services</h3><p>Isolated power, quiet HVAC with vibration isolation, and dimmable non-fluorescent lighting. No buzz.</p></div>
+    </div>
+    <div class="row mt3"><a class="btn" href="../dev-progress/design.html">Read The Design Log</a><a class="btn ghost" href="gear.html">Browse The Gear Locker</a></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Picture your session</h2>
+    <p>Plan how much time your next project needs in the rooms — then send it through with your interest registration.</p>
+    <a class="btn dark" href="services.html#planner">Open Session Planner</a>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
