@@ -210,7 +210,9 @@ p + p { margin-top: 1rem; }
 main { padding-top: calc(var(--nav-h) + 28px); }
 .brand { display: flex; align-items: center; gap: .75rem; color: var(--bone); }
 .brand:hover { color: var(--bone); }
-.brand-mark { width: 40px; height: 40px; flex: none; }
+.brand-mark { width: 52px; height: 52px; flex: none; object-fit: contain; filter: drop-shadow(0 0 10px rgba(79,184,160,.18)); }
+.foot-logo { width: 150px; height: 150px; object-fit: contain; }
+.hero-logo { width: clamp(96px, 12vw, 140px); height: auto; margin-bottom: 1.4rem; filter: drop-shadow(0 0 24px rgba(79,184,160,.2)); }
 .brand-txt { font-family: var(--f-head); font-weight: 900; text-transform: uppercase; line-height: .86; font-size: 1.28rem; letter-spacing: .04em; }
 .brand-txt b { display: block; color: var(--verdi); font-family: var(--f-sten); font-weight: 900; letter-spacing: .18em; font-size: .95rem; }
 .menu { display: flex; list-style: none; align-items: center; gap: .1rem; }

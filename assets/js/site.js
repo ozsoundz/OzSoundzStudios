@@ -68,7 +68,8 @@
   window.OZSicon = icon;
   function paintIcons(scope) { $$('i[data-i]', scope).forEach(function (el) { el.outerHTML = icon(el.getAttribute('data-i'), el.className); }); }
 
-  var MARK = '<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M1 1h38l8 8v38H9l-8-8z" fill="#101413" stroke="#4FB8A0" stroke-width="2"/><path d="M10 31a14 14 0 0 1 28 0" fill="none" stroke="#E8E2D2" stroke-width="2"/><path d="M13 22l2 2M24 16v3M35 22l-2 2" stroke="#E8E2D2" stroke-width="2"/><path d="M31 21l2.5-2.5" stroke="#E3321F" stroke-width="2.4"/><path d="M24 31L32 20" stroke="#FFB23F" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="31" r="3" fill="#FFB23F"/><path d="M10 38h28" stroke="#4FB8A0" stroke-width="1.5" stroke-dasharray="2 2"/></svg>';
+  var MARK = '<img class="brand-mark" src="' + ROOT + 'assets/img/logo-160.png" alt="" width="52" height="52">';
+  var LOGO_BIG = '<img class="foot-logo" src="' + ROOT + 'assets/img/logo.png" alt="Oz Soundz Studios" width="150" height="150" loading="lazy">';
 
   /* ---------------- NAV + FOOTER ---------------- */
   var NAV = [
@@ -114,7 +115,7 @@
     function col(title, list) { return '<div><h4>' + title + '</h4><ul>' + list.map(function (l) { return '<li><a href="' + url(l[1]) + '"' + (/^https?:/.test(l[1]) ? ' target="_blank" rel="noopener"' : '') + '>' + l[0] + '</a></li>'; }).join('') + '</ul></div>'; }
     host.outerHTML =
       '<footer class="foot" id="site-footer"><div class="container"><div class="foot-grid">' +
-      '<div><a class="brand" href="' + url('index.html') + '">' + MARK + '<span class="brand-txt">Oz Soundz<b>Studios</b></span></a>' +
+      '<div><a href="' + url('index.html') + '" aria-label="Oz Soundz Studios home">' + LOGO_BIG + '</a>' +
       '<p class="about">A fully functioning recording space for independent artists and audio engineers. Central Coast, NSW. Opening ' + S.opening + '.</p><div class="socials">' + socials + '</div></div>' +
       col('The Studio', [['The Rooms', 'the-studio/index.html'], ['Services', 'the-studio/services.html'], ['Session Planner', 'the-studio/services.html#planner'], ['Gear Locker', 'the-studio/gear.html']]) +
       col('Dev Progress', [['Overview', 'dev-progress/index.html'], ['Plan', 'dev-progress/plan.html'], ['Design', 'dev-progress/design.html'], ['Build', 'dev-progress/build.html'], ['Test', 'dev-progress/test.html'], ['Q&A', 'dev-progress/qa.html']]) +
