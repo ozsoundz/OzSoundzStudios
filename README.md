@@ -1,7 +1,7 @@
 # Oz Soundz Studios — Website
 
 Static multi-page site for **ozsoundzstudios.com.au**, in the same grungy family as Oz Soundz Records and The Oz Soundz Group.
-Studios gets its own colour lane, **Verdigris & Valve**: oxidised-copper patina green, valve/VU-meter amber, and a hot REC red.
+Studios gets its own colour lane, **Cobalt & Valve**: the cobalt blue from the Oz Soundz Studios logo, valve/VU-meter amber, and a hot REC red.
 
 No build step and no framework. Upload the folder to any static host (GitHub Pages, Netlify, cPanel, etc.) and it works.
 

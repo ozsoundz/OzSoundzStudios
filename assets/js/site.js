@@ -274,8 +274,8 @@
     var seed = 0; for (var k = 0; k < p.title.length; k++) seed = (seed * 31 + p.title.charCodeAt(k)) >>> 0;
     function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
     var bars = '', w = 400, h = 200, n = 64;
-    for (var j = 0; j < n; j++) { var a = (Math.sin(j / 5 + i) * .5 + .5) * rnd() * 80 + 6; bars += '<rect x="' + (j * (w / n)) + '" y="' + (h / 2 - a / 2) + '" width="' + (w / n - 2) + '" height="' + a + '" fill="' + (j % 11 === 0 ? '#FFB23F' : '#2C8272') + '" opacity="' + (0.35 + rnd() * .6).toFixed(2) + '"/>'; }
-    return '<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="200" fill="#0B0E0D"/>' + bars +
+    for (var j = 0; j < n; j++) { var a = (Math.sin(j / 5 + i) * .5 + .5) * rnd() * 80 + 6; bars += '<rect x="' + (j * (w / n)) + '" y="' + (h / 2 - a / 2) + '" width="' + (w / n - 2) + '" height="' + a + '" fill="' + (j % 11 === 0 ? '#FFB23F' : '#3A44B0') + '" opacity="' + (0.35 + rnd() * .6).toFixed(2) + '"/>'; }
+    return '<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="200" fill="#0B0C12"/>' + bars +
       '<text x="388" y="188" text-anchor="end" font-family="Big Shoulders Stencil Display, sans-serif" font-weight="900" font-size="64" fill="rgba(232,226,210,.07)">' + String(i + 1).padStart(2, '0') + '</text></svg>';
   }
 
@@ -429,8 +429,8 @@
       vuL.classList.toggle('lit', armed); vuR.classList.toggle('lit', armed);
       // scope
       var w = cnv.width, h = cnv.height; ctx.clearRect(0, 0, w, h);
-      ctx.strokeStyle = 'rgba(79,184,160,.18)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
-      ctx.strokeStyle = armed ? '#FFB23F' : '#4FB8A0'; ctx.lineWidth = 1.6 * (window.devicePixelRatio || 1);
+      ctx.strokeStyle = 'rgba(105,115,234,.18)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+      ctx.strokeStyle = armed ? '#FFB23F' : '#6973EA'; ctx.lineWidth = 1.6 * (window.devicePixelRatio || 1);
       ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 8; ctx.beginPath();
       var amp = h * .42 * Math.min(1, (lvL + lvR));
       for (var x = 0; x <= w; x += 2) {
