@@ -39,11 +39,16 @@ The header, navigation and footer are built by `site.js`, so a menu change only 
 | Floor-plan room descriptions | `rooms` |
 | Email, socials, ABN | `site` |
 
-## Forms (to do before going live)
+## Forms
 
-By default, forms open the visitor's email app with everything filled in, addressed to studios@ozsoundz.com.au.
-For real in-page submissions, create a free form endpoint (e.g. Formspree) and paste its URL into `site.formEndpoint` in `data.js`.
-All forms (register, enquiry, crew, Q&A, gear suggestions, newsletter) then post there automatically. Each form has a honeypot field to catch spam bots.
+Every form (register interest, enquiry, join the crew, Q&A, gear suggestions, newsletter) is sent by
+[FormSubmit](https://formsubmit.co) straight to studios@ozsoundz.com.au. No account is needed.
+
+**One-time activation:** the first time anyone submits a form, FormSubmit emails studios@ozsoundz.com.au
+an "Activate form" message. Click the button in it once, and from then on every submission arrives as an email
+(Reply goes straight to the person who filled it in). Until activation, submissions are held, not lost.
+
+To use a different service (e.g. Formspree), paste its endpoint into `site.formEndpoint` in `data.js`.
 
 ## Session Planner pricing
 

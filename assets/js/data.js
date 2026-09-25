@@ -15,9 +15,10 @@ window.OZS = {
     abn: '45 147 744 858',
     parent: { name: 'Vestinex Pty Ltd', url: 'https://vestinex.com.au' },
 
-    /* FORMS: paste a form endpoint here (e.g. Formspree: https://formspree.io/f/xxxxxxx).
-       Leave blank and forms fall back to opening the visitor's email app,
-       pre-filled and addressed to the email above. */
+    /* FORMS: left blank, every form (register, enquiry, crew, Q&A, gear, newsletter)
+       is delivered by FormSubmit to the email above. The very first submission sends
+       a one-off "Activate form" email to that address: click it once and forms go live.
+       To use another service instead (e.g. Formspree), paste its endpoint URL here. */
     formEndpoint: '',
 
     socials: [

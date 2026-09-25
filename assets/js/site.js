@@ -113,7 +113,7 @@
     var socials = (S.socials || []).map(function (s) { return '<a href="' + s.url + '" target="_blank" rel="noopener" aria-label="' + s.label + '">' + icon(s.k) + '</a>'; }).join('');
     function col(title, list) { return '<div><h4>' + title + '</h4><ul>' + list.map(function (l) { return '<li><a href="' + url(l[1]) + '"' + (/^https?:/.test(l[1]) ? ' target="_blank" rel="noopener"' : '') + '>' + l[0] + '</a></li>'; }).join('') + '</ul></div>'; }
     host.outerHTML =
-      '<footer class="foot"><div class="container"><div class="foot-grid">' +
+      '<footer class="foot" id="site-footer"><div class="container"><div class="foot-grid">' +
       '<div><a class="brand" href="' + url('index.html') + '">' + MARK + '<span class="brand-txt">Oz Soundz<b>Studios</b></span></a>' +
       '<p class="about">A fully functioning recording space for independent artists and audio engineers. Central Coast, NSW. Opening ' + S.opening + '.</p><div class="socials">' + socials + '</div></div>' +
       col('The Studio', [['The Rooms', 'the-studio/index.html'], ['Services', 'the-studio/services.html'], ['Session Planner', 'the-studio/services.html#planner'], ['Gear Locker', 'the-studio/gear.html']]) +
@@ -469,19 +469,31 @@
   }
   function send(form, subject, done) {
     var data = collect(form);
-    if (form._gotcha && form._gotcha.value) return done(true); // bot
+    if (form._gotcha && form._gotcha.value) return done(true); // bot trap filled: pretend success
     data._subject = subject;
-    if (S.formEndpoint) {
-      fetch(S.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { done(r.ok); }).catch(function () { done(false); });
-    } else {
-      var lines = Object.keys(data).filter(function (k) { return k[0] !== '_'; }).map(function (k) { return k.replace(/_/g, ' ').replace(/^./, function (m) { return m.toUpperCase(); }) + ': ' + data[k]; });
-      location.href = 'mailto:' + S.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n') + '\n\n— sent from ozsoundzstudios.com.au');
-      done(true, true);
-    }
+    data._template = 'table';
+    data._captcha = 'false';
+    if (data.email) data._replyto = data.email;
+    data.page = location.href;
+    // Default backend: FormSubmit (no account needed; first submission sends a one-off
+    // activation email to the address below). Set site.formEndpoint in data.js to use another service.
+    var endpoint = S.formEndpoint || ('https://formsubmit.co/ajax/' + S.email);
+    var btn = form.querySelector('[type=submit]'), label = btn ? btn.innerHTML : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return r.ok && String(j.success) !== 'false'; }); })
+      .catch(function () { return false; })
+      .then(function (ok) { if (btn) { btn.disabled = false; btn.innerHTML = label; } done(ok); });
   }
-  function successHTML(title, msg, viaMail) {
-    return '<div class="sent"><div class="big">' + title + '</div><p class="body" style="margin:0 auto 1.4rem">' + msg + (viaMail ? '<br><br><span class="form-note">Your email app should have opened with everything filled in — just hit send. Nothing opened? Email us at <a href="mailto:' + S.email + '">' + S.email + '</a>.</span>' : '') + '</p><button class="btn ghost sm" type="button" onclick="location.reload()">Send another</button></div>';
+  function failHTML() {
+    return '<div class="disclaimer mt1" role="alert"><b>Couldn’t send that just now.</b> Check your connection and try again, or email us directly at <a href="mailto:' + S.email + '">' + S.email + '</a>.</div>';
+  }
+  function showFail(form) {
+    var old = form.querySelector('.send-fail'); if (old) old.remove();
+    var d = document.createElement('div'); d.className = 'send-fail'; d.innerHTML = failHTML(); form.appendChild(d);
+  }
+  function successHTML(title, msg) {
+    return '<div class="sent"><div class="big">' + title + '</div><p class="body" style="margin:0 auto 1.4rem">' + msg + '</p><button class="btn ghost sm" type="button" onclick="location.reload()">Send another</button></div>';
   }
   function forms() {
     // newsletter
@@ -491,7 +503,7 @@
         var em = f.email.value.trim();
         if (!EMAIL_RE.test(em)) { f.email.classList.add('bad'); msg.style.color = 'var(--rec-hi)'; msg.textContent = 'Enter a valid email'; return; }
         f.email.classList.remove('bad');
-        send(f, 'Newsletter signup — Oz Soundz Studios', function (ok, mail) { msg.style.color = ok ? 'var(--verdi)' : 'var(--rec-hi)'; msg.textContent = ok ? (mail ? 'Email app opened — hit send to join.' : 'You’re on the list. Welcome aboard.') : 'Something went wrong — try again.'; if (ok && !mail) f.reset(); });
+        send(f, 'Newsletter signup — Oz Soundz Studios', function (ok) { msg.style.color = ok ? 'var(--verdi)' : 'var(--rec-hi)'; msg.textContent = ok ? 'You’re on the list. Welcome aboard.' : 'Couldn’t sign you up just now. Try again, or email ' + S.email; if (ok) f.reset(); });
       });
     });
     // simple forms
@@ -500,11 +512,9 @@
         e.preventDefault(); if (!validate(f)) return;
         var subj = f.getAttribute('data-subject') || 'Website enquiry';
         if (f.type && f.type.value) subj += ' — ' + f.type.value;
-        var btn = f.querySelector('[type=submit]'); btn.disabled = true;
-        send(f, subj, function (ok, mail) {
-          btn.disabled = false;
-          if (ok) f.parentNode.innerHTML = successHTML(f.getAttribute('data-done') || 'Received.', 'Thanks for getting in touch — we’ll get back to you as soon as we can.', mail);
-          else toast('Couldn’t send just now. Please email ' + S.email);
+        send(f, subj, function (ok) {
+          if (ok) f.parentNode.innerHTML = successHTML(f.getAttribute('data-done') || 'Received.', 'Thanks for getting in touch — we’ll get back to you as soon as we can.');
+          else showFail(f);
         });
       });
     });
@@ -520,11 +530,9 @@
       $$('[data-prev]', reg).forEach(function (b) { b.addEventListener('click', function () { go(cur - 1); }); });
       reg.addEventListener('submit', function (e) {
         e.preventDefault(); if (!validate(steps[cur])) return;
-        var btn = reg.querySelector('[type=submit]'); btn.disabled = true;
-        send(reg, 'Register interest — Oz Soundz Studios', function (ok, mail) {
-          btn.disabled = false;
-          if (ok) reg.parentNode.innerHTML = successHTML('You’re on the list.', 'Thanks for registering — early registrations get priority access when bookings open, and help shape what we build.', mail);
-          else toast('Couldn’t send just now. Please email ' + S.email);
+        send(reg, 'Register interest — Oz Soundz Studios', function (ok) {
+          if (ok) reg.parentNode.innerHTML = successHTML('You’re on the list.', 'Thanks for registering — early registrations get priority access when bookings open, and help shape what we build. We’ll be in touch at the email you gave us.');
+          else showFail(reg);
         });
       });
       go(0);
